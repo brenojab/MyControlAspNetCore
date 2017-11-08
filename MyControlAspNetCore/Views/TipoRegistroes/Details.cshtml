@@ -1,0 +1,54 @@
+﻿@model MyControlAspNetCore.Models.TipoRegistro
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TipoRegistro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataCriacao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataCriacao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioCriador)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioCriador)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataAlteracao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataAlteracao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioAlterador)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioAlterador)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Guid">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
