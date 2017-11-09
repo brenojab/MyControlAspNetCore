@@ -11,7 +11,7 @@ using System;
 namespace MyControlAspNetCore.Migrations
 {
     [DbContext(typeof(MyControlAspNetCoreContext))]
-    [Migration("20171108210019_InitDB")]
+    [Migration("20171109203608_InitDB")]
     partial class InitDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,6 +34,8 @@ namespace MyControlAspNetCore.Migrations
 
                     b.Property<string>("Descricao");
 
+                    b.Property<string>("TipoRegistro");
+
                     b.Property<string>("UsuarioAlterador");
 
                     b.Property<string>("UsuarioCriador");
@@ -47,7 +49,8 @@ namespace MyControlAspNetCore.Migrations
 
             modelBuilder.Entity("MyControlAspNetCore.Models.TipoRegistro", b =>
                 {
-                    b.Property<Guid>("Guid");
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Cor");
 
@@ -108,14 +111,6 @@ namespace MyControlAspNetCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuario");
-                });
-
-            modelBuilder.Entity("MyControlAspNetCore.Models.TipoRegistro", b =>
-                {
-                    b.HasOne("MyControlAspNetCore.Models.Registro")
-                        .WithOne("Tipo")
-                        .HasForeignKey("MyControlAspNetCore.Models.TipoRegistro", "Guid")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

@@ -53,11 +53,16 @@ namespace MyControlAspNetCore.Controllers
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Descricao,Cor,Guid,DataCriacao,UsuarioCriador,DataAlteracao,UsuarioAlterador")] TipoRegistro tipoRegistro)
+    public async Task<IActionResult> Create([Bind("Descricao,Cor,Guid,DataAlteracao,DataCriacao,UsuarioAlterador,UsuarioCriador")] TipoRegistro tipoRegistro)
     {
       if (ModelState.IsValid)
       {
         tipoRegistro.Guid = Guid.NewGuid();
+        tipoRegistro.UsuarioCriador = "";
+        tipoRegistro.UsuarioAlterador = "";
+        tipoRegistro.DataCriacao = DateTime.Now;
+        tipoRegistro.DataAlteracao = DateTime.Now;
+
         _context.Add(tipoRegistro);
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
@@ -86,7 +91,7 @@ namespace MyControlAspNetCore.Controllers
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(Guid id, [Bind("Descricao,Cor,Guid,DataCriacao,UsuarioCriador,DataAlteracao,UsuarioAlterador")] TipoRegistro tipoRegistro)
+    public async Task<IActionResult> Edit(Guid id, [Bind("Descricao,Cor,Guid,DataAlteracao,DataCriacao,UsuarioAlterador,UsuarioCriador")] TipoRegistro tipoRegistro)
     {
       if (id != tipoRegistro.Guid)
       {
@@ -97,6 +102,11 @@ namespace MyControlAspNetCore.Controllers
       {
         try
         {
+          tipoRegistro.UsuarioCriador = tipoRegistro.UsuarioCriador;
+          tipoRegistro.UsuarioAlterador = "";
+          tipoRegistro.DataCriacao = tipoRegistro.DataCriacao;
+          tipoRegistro.DataAlteracao = DateTime.Now;
+
           _context.Update(tipoRegistro);
           await _context.SaveChangesAsync();
         }

@@ -10,6 +10,6 @@ namespace MyControlAspNetCore.Models
     public decimal Valor { get; set; }
     public string Descricao { get; set; }
     public bool Debito { get; set; }
-    public TipoRegistro Tipo { get; set; }
+    public string TipoRegistro { get; set; }
   }
 }

@@ -7,7 +7,7 @@ namespace MyControlAspNetCore.Models
 {
   public class Parcelado : BaseClass
   {
-    public List<Registro> ListaRegistros { get; set; }
+    public List<string> ListaRegistros { get; set; }
 
     public int TotalParcelas
     {
@@ -20,13 +20,5 @@ namespace MyControlAspNetCore.Models
         TotalParcelas = value;
       }
     }
-
-    public decimal ValorTotal
-    {
-      get
-      {
-        return ListaRegistros.Sum(r => r.Valor);
-      }
-    }
-  }
+  } 
 }
